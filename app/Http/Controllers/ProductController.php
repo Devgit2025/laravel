@@ -54,13 +54,10 @@ class ProductController extends Controller
         ]);
 
         //dd($request->all());
-
-        // return redirect()->back()->with('success', 'บันทึกสำเร็จ');
-
         //$products = Product::all();
         //return view('welcome', compact('products'));
         //return redirect('/');
-        
+
         //ไปยังหน้าแอด และสร้าง session ชื่อ success พร้อมส่งข้อความด้วยไปยังหน้า addproduct
         return redirect()
             ->route('addproduct')
