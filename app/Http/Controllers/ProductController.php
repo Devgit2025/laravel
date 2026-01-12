@@ -68,4 +68,11 @@ class ProductController extends Controller
     {
         return view('addproduct');
     }
+
+    function allproduct()
+    {
+        //return view('allproduct');
+        $products = Product::paginate(5);
+        return view('allproduct', compact('products'));
+    }
 }
