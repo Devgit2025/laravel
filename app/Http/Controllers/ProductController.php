@@ -72,7 +72,75 @@ class ProductController extends Controller
     function allproduct()
     {
         //return view('allproduct');
-        $products = Product::paginate(5);
+        //$products = Product::paginate(5);
+        $products = Product::orderByDesc('id')->paginate(5);
         return view('allproduct', compact('products'));
+    }
+
+    function editproduct($id)
+    {
+        $product = Product::findOrFail($id);
+        return view('editproduct', compact('product'));
+
+    }
+
+    function updateproduct(Request $request, $id)
+    {
+          // 1. validate ข้อมูล
+        $request->validate(
+            [
+                'pro_name' => 'required|string|max:100',
+                'pro_detail' => 'required|string',
+                'pro_price' => 'required|numeric|min:0',
+                'pro_stock' => 'required|integer|min:0'
+                //'pro_img' => 'required|image|mimes:jpg,jpeg,png|max:2048',
+            ],
+            [
+                'pro_name.required' => 'กรุณากรอกชื่อสินค้า',
+                'pro_name.max' => 'ชื่อสินค้าห้ามเกิน 100 ตัวอักษร',
+                'pro_detail.required' => 'กรุณากรอกรายละเอียดสินค้า',
+                'pro_price.required' => 'กรุณากรอกราคา',
+                'pro_price.numeric' => 'ราคาต้องเป็นตัวเลข',
+                'pro_stock.required' => 'กรุณากรอกจำนวนสินค้า',
+                'pro_stock.integer' => 'ราคาต้องเป็นตัวเลขจำนวนเต็ม',
+                'pro_img.required' => 'กรุณาเลือกรูปภาพ'
+            ]
+        );
+        $imagePath = $request->file('image')->store('products', 'public');
+
+        //$product = Product::find($id);
+
+        //$product->update($request->all());
+        
+        // 2. ดึงข้อมูลสินค้าที่จะแก้ไข
+        $product = Product::findOrFail($id);
+
+        // 3. update ข้อมูล
+        $product->update([
+            'pro_name' => $request->pro_name,
+            'pro_img' => $imagePath,
+            'pro_price' => $request->pro_price,
+            'pro_detail' => $request->pro_detail,
+            'pro_stock' => $request->pro_stock
+        ]);
+
+        // 4. redirect
+        return redirect()->route('allproduct')
+            ->with('success', 'แก้ไขสินค้าเรียบร้อย');
+    }
+
+    function deleteproduct($id)
+    {
+        
+        // ดึงข้อมูลสินค้าที่จะลบ
+        $product = Product::findOrFail($id);
+
+        // ลบข้อมูล
+        $product->delete();
+
+        // กลับไปหน้าเดิม
+        return redirect()->route('allproduct')
+            ->with('success', 'ลบข้อมูลเรียบร้อย');
+
     }
 }
