@@ -61,6 +61,6 @@
         @enderror
 
         <button type="submit" class="btn btn-success">บันทึก</button>
-        <a href="/" class="btn btn-secondary">กลับหน้าหลัก</a>
+        <a href="{{route('allproduct')}}" class="btn btn-secondary">กลับหน้าหลัก</a>
     </form>
 @endsection

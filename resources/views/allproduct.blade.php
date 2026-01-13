@@ -14,6 +14,7 @@
         <table class="table table-striped">
             <thead>
                 <tr>
+                    <th scope="col">ID</th>
                     <th scope="col">รูปภาพ</th>
                     <th scope="col">ชื่อสินค้า</th>
                     <th scope="col">ราคา</th>
@@ -25,6 +26,7 @@
 
                 @foreach ($products as $item)
                     <tr>
+                        <td>{{$item->id}}</td>
                         <td> <img src="{{ asset('storage/' . $item->pro_img) }}" alt="{{ $item->pro_name }}" width="100"
                                 height="100">
                         </td>
