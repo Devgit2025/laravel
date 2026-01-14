@@ -7,5 +7,5 @@
     <p>{{ auth()->user()->id }}</p>
     <p>{{ auth()->user()->name }}</p>
     <p>{{ auth()->user()->email }}</p>
-    <a href="{{ route('edit.user', auth()->user()->id) }}" class="btn btn-warning">แก้ไข</a>
+    <a href="{{ route('edit.user')}}" class="btn btn-warning">แก้ไข</a>
 @endsection

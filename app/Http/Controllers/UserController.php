@@ -16,10 +16,11 @@ class UserController extends Controller
         return view('user');
     }
 
-    function edituser($id)
+    function edituser()
     {
         //return redirect('/edituser');
-        $user = User::findOrFail($id);
-        return view('edituser', compact('user'));
+        //$user = User::findOrFail($id);//จาก user ต้องเปลี่ยนเป็น userDetailแทนแล้วส่งค่าไปยัง edit
+        //return view('edituser', compact('user'));
+        return view('edituser');
     }
 }

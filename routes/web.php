@@ -15,7 +15,7 @@ Route::get('delete/{id}', [ProductController::class, 'deleteproduct'])->name('de
 Route::post('updateproduct/{id}', [ProductController::class, 'updateproduct'])->name('updateproduct');
 
 Route::get('userdata',[UserController::class, 'index'])->name('user.index');
-Route::get('edituser/{id}', [UserController::class, 'edituser'])->name('edit.user');
+Route::get('edituser', [UserController::class, 'edituser'])->name('edit.user');
 
 Auth::routes();
 
