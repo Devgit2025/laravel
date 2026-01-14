@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
-
+use App\Http\Controllers\UserController;
 
 
 
@@ -14,6 +14,8 @@ Route::get('editproduct/{id}', [ProductController::class, 'editproduct'])->name(
 Route::get('delete/{id}', [ProductController::class, 'deleteproduct'])->name('deleteproduct');
 Route::post('updateproduct/{id}', [ProductController::class, 'updateproduct'])->name('updateproduct');
 
+Route::get('userdata',[UserController::class, 'index'])->name('user.index');
+Route::get('edituser/{id}', [UserController::class, 'edituser'])->name('edit.user');
 
 Auth::routes();
 

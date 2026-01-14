@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
+
     function index()
     {
 
