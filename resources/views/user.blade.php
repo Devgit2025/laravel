@@ -10,17 +10,38 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
         </div>
     @endif
-    <p>{{ auth()->user()->id }}</p>
-    <p>{{ auth()->user()->name }}</p>
-    <p>{{ auth()->user()->email }}</p>
-    
-    @if ($user_detail)
-        <p>Tel. : {{$user_detail->user_tel}}</p>
-        <p>Role : {{$user_detail->role}}</p>
 
-    @else
-        
-    @endif
+    <div class="d-flex justify-content-center mt-5">
+        <table class="table table-bordered w-50 text-center">
+            <tbody>
+                <tr>
+                    <th width="30%" class="table-primary">ID</th>
+                    <td>{{ Auth::id() }}</td>
+                </tr>
+                <tr>
+                    <th class="table-primary">ชื่อ</th>
+                    <td>{{ auth()->user()->name }}</td>
+                </tr>
+                <tr>
+                    <th class="table-primary">อีเมล</th>
+                    <td>{{ auth()->user()->email }}</td>
+                </tr>
+                @if ($user_detail)
+                    <tr>
+                        <th class="table-primary">เบอร์โทรศัพท์</th>
+                        <td>{{ $user_detail->user_tel }}</td>
+                    </tr>
+                    <tr>
+                        <th class="table-primary">สิทธิ์ผู้ใช้</th>
+                        <td>{{ $user_detail->role }}</td>
+                    </tr>
+                @else
+                @endif
+                <tr>
+                    <td colspan="2"> <a href="{{ route('edit.user') }}" class="btn btn-warning">แก้ไขข้อมูล</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-    <a href="{{ route('edit.user') }}" class="btn btn-warning">แก้ไข</a>
 @endsection

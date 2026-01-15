@@ -38,7 +38,7 @@
         @if ($user_detail)
             <div class="form-group">
                 <label for="user_tel">Tel.</label>
-                <input type="text" name="user_tel" class="form-control" value="{{$user_detail->user_tel}}">
+                <input type="text" name="user_tel" class="form-control" value="{{ $user_detail->user_tel }}">
             </div>
             @error('user_tel')
                 <div class="my-2">
@@ -46,7 +46,7 @@
                 </div>
             @enderror
         @else
-        <div class="form-group">
+            <div class="form-group">
                 <label for="user_tel">Tel.</label>
                 <input type="text" name="user_tel" class="form-control" placeholder="กรุณาป้อนหมายเลขโทรศัพท์">
             </div>

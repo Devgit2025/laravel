@@ -56,7 +56,7 @@
 
         <div class="my-4">
             <button type="submit" class="btn btn-success">อัปเดต</button>
-            <a href="/allproduct" class="btn btn-secondary">กลับหน้าแก้ไขสินค้า</a>
+            <a href="/allproduct" class="btn btn-secondary">กลับหน้าสินค้าทั้งหมด</a>
         </div>
 
     </form>

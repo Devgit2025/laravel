@@ -13,9 +13,15 @@ class UserController extends Controller
     //
     function index()
     {
-        $user_detail = UserDetail::where('id_users', Auth::id())->firstOrFail();
+        //Eror 404 จากการหา id_users ไม่พบใน ฐานข้อมูล
 
-        return view('user', compact('user_detail'));
+        $user_detail = UserDetail::where('id_users', Auth::id())->firstOrFail();
+        if ($user_detail) {
+            return view('user', compact('user_detail'));
+        } else {
+            return redirect()->route('user.index');
+        }
+        
     }
 
     function edituser()
@@ -59,7 +65,6 @@ class UserController extends Controller
             $user_detail->update([
                 'user_tel' => $request->user_tel
             ]);
-            
         } else {
             UserDetail::create([
                 'user_tel' => $request->user_tel,

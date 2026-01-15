@@ -61,6 +61,8 @@
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="/">หน้าหลัก</a>
+
+                            
                                     <a class="dropdown-item" href="{{ route('user.index')}}">ข้อมูลส่วนตัว</a>
                                     <a class="dropdown-item" href="{{ route('allproduct') }}">สินค้าทั้งหมด</a>
                                     <a class="dropdown-item" href="{{ route('addproduct') }}">เพิ่มสินค้า</a>
