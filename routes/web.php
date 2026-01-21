@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CartController;
+
 
 
 //Product
@@ -18,6 +20,13 @@ Route::post('updateproduct/{id}', [ProductController::class, 'updateproduct'])->
 Route::get('userdata',[UserController::class, 'index'])->name('user.index');
 Route::get('edituser', [UserController::class, 'edituser'])->name('edit.user');
 Route::post('updateuser/{id}', [UserController::class, 'updateuser'])->name('update.user');
+
+//cart
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::post('/cart/add/{id}', [CartController::class, 'add'])->name('cart.add');
+Route::post('/cart/update/{id}', [CartController::class, 'update'])->name('cart.update');
+Route::get('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
+Route::get('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');
 
 Auth::routes();
 
