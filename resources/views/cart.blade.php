@@ -37,7 +37,7 @@
                         <button class="btn btn-primary">อัปเดต</button>
                     </form>
                 </td>
-                <td>{{ number_format($sum) }}</td>
+                <td>{{ number_format($sum,2) }}</td>
                 <td>
                     <a href="{{ route('cart.remove', $id) }}" class="btn btn-danger">ลบ</a>
                 </td>
@@ -49,7 +49,7 @@
 
     <div class="d-flex">
         <a href="{{ route('cart.clear') }}" class="btn btn-secondary ms-auto me-3">ล้างตะกร้า</a>
-        <a href="#" class="btn btn-success">คิดเงิน</a>
+        <a href="{{route('checkout.index')}}" class="btn btn-success">คิดเงิน</a>
 
     </div>
     

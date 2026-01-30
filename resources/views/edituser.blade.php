@@ -4,8 +4,6 @@
 @endsection
 @section('content')
     <h2 class="text-center">แก้ไขข้อมูลส่วนตัว</h2>
-    <h1>ID : {{ auth()->user()->id }}</h1>
-    <h3>Fullname : {{ auth()->user()->name }}</h3>
 
 
     <form method="POST" action="{{ route('update.user', auth()->user()->id) }}" enctype="multipart/form-data">
