@@ -77,10 +77,15 @@ class CheckoutController extends Controller
                     'order_detail_total' => $sum
                 ]);
             }
+
+            $order = Orders::where('id', $orderId)->firstOrFail();
+            $order_details = OrderDetail::where('order_id', $orderId)->get();
+
+
             session()->forget('cart');
         }
 
-        return view('bill');
+        return view('bill', compact('order', 'order_details'));
     }
 
     function allbill()
