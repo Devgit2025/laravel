@@ -19,6 +19,8 @@ return new class extends Migration
             $table->decimal('pro_price');
             $table->string('order_detail_quantity');
             $table->decimal('order_detail_total');
+            $table->timestamps();
+
         });
     }
 

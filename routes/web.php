@@ -33,7 +33,11 @@ Route::get('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');
 
 //checkout
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
-Route::post('/sendorder', [CheckoutController::class, 'sendorder'])->name('send.order');
+Route::post('/sendorder', [CheckoutController::class, 'sendorder'])->name('sendorder');
+Route::get('/bill', [CheckoutController::class, 'bill'])->name('bill');
+Route::get('/allbill', [CheckoutController::class, 'allbill'])->name('allbill');
+Route::get('detailbill/{id}', [CheckoutController::class, 'detailbill'])->name('detailbill');
+
 
 Auth::routes();
 

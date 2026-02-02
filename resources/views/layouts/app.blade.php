@@ -67,6 +67,8 @@
                                     <a class="dropdown-item" href="{{ route('allproduct') }}">สินค้าทั้งหมด</a>
                                     <a class="dropdown-item" href="{{ route('addproduct') }}">เพิ่มสินค้า</a>
                                     <a class="dropdown-item" href="{{ route('cart.index') }}">ตะกร้าสินค้า</a>
+                                    <a class="dropdown-item" href="{{ route('allbill') }}">รายการจัดส่งทั้งหมด</a>
+
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();

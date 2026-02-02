@@ -63,20 +63,44 @@ class CheckoutController extends Controller
                 'id_users' => Auth::id()
             ]);
 
-            $total = 0;
-            $orderId = $order->id;// 👉 order_id ที่เพิ่ง insert
+            $orderId = $order->id; // 👉 order_id ที่เพิ่ง insert
 
             foreach ($cart as $item) {
+                $sum = $item['price'] * $item['quantity'];
+                //$total += $sum;
                 OrderDetail::create([
                     'order_id' => $orderId,
                     'pro_id'        => $item['id'],
                     'pro_name'      => $item['name'],
+                    'pro_price' => $item['price'],
+                    'order_detail_quantity' => $item['quantity'],
+                    'order_detail_total' => $sum
                 ]);
             }
+            session()->forget('cart');
         }
 
+        return view('bill');
+    }
+
+    function allbill()
+    {
+        //$orders = Orders::all();
+        //$orders = Orders::orderByDesc('id')->paginate(5);
+        $orders = Orders::where('id_users', Auth::id())
+            ->orderByDesc('id')
+            ->paginate(5);
+        return view('allbill', compact('orders'));
+
+    }
+
+    function detailbill($id)
+    {
+        $order = Orders::findOrFail($id);
+
+        $order_details = OrderDetail::where('order_id', $id)->get();
 
 
-        return view('checkout');
+        return view('detailbill', compact('order', 'order_details'));
     }
 }

@@ -20,6 +20,8 @@ return new class extends Migration
             $table->text('order_address');
             $table->decimal('order_price_total');
             $table->string('id_users');//id from table users
+            $table->timestamps();
+
         });
     }
 
